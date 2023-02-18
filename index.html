@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mumble - FK</title>
+    <link rel="icon" type="image/png" href="/images/theme_logo.png">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #36393f;
+		}
+		h1 {
+			text-align: center;
+			color: #fff;
+		}
+		form {
+			margin: 0 auto;
+            margin-top: 20px;
+			max-width: 500px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: #40444b;
+			padding: 20px;
+			border-radius: 4px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		}
+		label {
+			color: #fff;
+			margin-bottom: 10px;
+			text-align: left;
+			width: 100%;
+		}
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin: 10px 0;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		button {
+			background-color: #FFB347;
+			color: #fff;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+		button:hover {
+			background-color: #ffa047;
+		}
+		#mumble-link {
+			margin-top: 20px;
+			text-align: center;
+            color :rgba(0, 0, 0, 0.15)
+            
+		}
+        #logo {
+			display: block;
+			width: 100px;
+			height: 100px;
+			margin: 10px;
+            margin-top: -60px;
+            margin-bottom: -50px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Page de connexion au Mumble de la FK</h1>
+    <a><img id="logo" src="/images/mumble.png" alt="Logo"></a>
+
+	<form>
+		<label for="pseudo">Entrez votre pseudo :</label>
+		<input type="text" id="pseudo" name="pseudo">
+		<button type="button" onclick="generateLink()">Générer le lien de connexion Mumble</button>
+	</form>
+	<div id="mumble-link"></div>
+	<script>
+		function generateLink() {
+			var pseudo = document.getElementById("pseudo").value;
+			var mumbleLink = document.getElementById("mumble-link");
+			var mumbleUrl = "mumble://fkteam.mumble.gg:10003/?version=1.2.8&username=" + encodeURIComponent(pseudo);
+			var linkHtml = '<a href="' + mumbleUrl + '" style="color : orange;">Se connecter au serveur Mumble avec le pseudo ' + pseudo + '</a>';
+		 
+            mumbleLink.innerHTML = linkHtml; 
+            
+		}
+	</script>
+</body>
+</html>
