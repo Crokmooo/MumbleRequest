@@ -54,8 +54,7 @@
 		#mumble-link {
 			margin-top: 20px;
 			text-align: center;
-            color :rgba(0, 0, 0, 0.15)
-            
+			color: rgba(145, 82, 0, 0.555);
 		}
         #logo {
 			display: block;
@@ -65,28 +64,145 @@
             margin-top: -60px;
             margin-bottom: -50px;
 		}
+
+		#info-button {
+			margin-left: 66%;
+			margin-top: -30%;
+			position: relative;
+			background-color: transparent;
+			color: #fff;
+			font-size: 20px;
+			border: none;
+			cursor: pointer;
+			outline: none;
+			transition: transform 0.3s ease-in-out;
+		}
+
+		#info-button:before,
+		#info-button:after {
+			content: '';
+			position: absolute;
+			background-color: #fff;
+			border-radius: 50%;
+			transform: scale(0);
+			transition: transform 0.3s ease-in-out;
+		}
+
+		#info-button:before {
+			top: -2px;
+			left: -2px;
+			width: 8px;
+			height: 8px;
+		}
+
+		#info-button:after {
+			bottom: -2px;
+			right: -2px;
+			width: 8px;
+			height: 8px;
+		}
+
+		#info-button:hover:before,
+		#info-button:hover:after {
+			transform: scale(0.5);
+		}
+
+		#info-button:hover {
+			transform: rotate(360deg);
+		}
+		#info-text {
+			margin-left: 70%;
+			color :rgba(145, 82, 0, 0.555);
+			background-color: #40444b52;
+			border-radius: 5%;
+		}
+		#info-text li {
+			margin-bottom: 10px;
+			line-height: 1.5;
+		}
+
+		#info-text strong {
+			font-weight: bold;
+		}
+
+		#info-text ul li::before {
+			content: "\2022"; /* caractère unicode pour le point */
+			margin-right: 5px;
+			color: rgba(255, 166, 0, 0.747);
+		}
+
+		
 	</style>
 </head>
+
+
 <body>
 	<h1>Page de connexion au Mumble de la FK</h1>
 
+	<form method="post" onsubmit="event.preventDefault(); generateLink();">
 
-	<form>
 		<label for="pseudo">Entrez votre pseudo :</label>
-		<input type="text" id="pseudo" name="pseudo">
-		<button type="button" onclick="generateLink()">Générer le lien de connexion Mumble</button>
+		<input type="text" id="pseudo" name="pseudo" required>
+		<button type="submit">Générer le lien de connexion Mumble</button>
 	</form>
+
 	<div id="mumble-link"></div>
+
 	<script>
 		function generateLink() {
 			var pseudo = document.getElementById("pseudo").value;
 			var mumbleLink = document.getElementById("mumble-link");
+	
+			if (!pseudo) {
+				mumbleLink.innerHTML = "Veuillez renseigner ce champ.";
+				mumbleLink.style.color = "red"; // modification de la couleur du texte
+				return;
+			}
+	
 			var mumbleUrl = "mumble://fkteam.mumble.gg:10003/?version=1.2.8&username=" + encodeURIComponent(pseudo);
 			var linkHtml = '<a href="' + mumbleUrl + '" style="color : orange;">Se connecter au serveur Mumble avec le pseudo ' + pseudo + '</a>';
-		 
-            mumbleLink.innerHTML = linkHtml; 
-            
+			mumbleLink.innerHTML = linkHtml;
+			mumbleLink.style.color = "inherit"; // restauration de la couleur du texte
 		}
+	
+		// empêcher la soumission du formulaire lorsque l'utilisateur appuie sur Entrée
+		var form = document.querySelector("form");
+		form.addEventListener("submit", function (event) {
+			event.preventDefault();
+		});
 	</script>
+		<button id="info-button" type="button" onclick="showInfo()" style="color : orange;">ℹ️</button>
+
+			<div id="info-text" style="display: none;">
+				<ul style="list-style-type: none; color: rgba(197, 119, 1, 0.829);">
+				<li>Ouvrez Mumble</li>
+				<li>Cliquez sur "Serveur" dans la barre de menus</li>
+				<li>Cliquez sur "Se connecter..."</li>
+				<li>Dans la boîte de dialogue "Se connecter au serveur", entrez les informations suivantes :</li>
+				<ul style="list-style-type: none; color: rgba(180, 108, 0, 0.767);">
+					<li>Nom : <strong>FKTeam Mumble</strong></li>
+					<li>Adresse : <strong>fkteam.mumble.gg</strong></li>
+					<li>Port : <strong>10003</strong></li>
+					<li>Nom d'utilisateur : [Votre pseudo]</li>
+				</ul>
+				</ul>
+			</div>
+		  
+
+			<script>
+			function showInfo() {
+			var infoText = document.getElementById("info-text");
+			var infoButton = document.getElementById("info-button");
+			if (infoText.style.display === "none") {
+				infoText.style.display = "block";
+				infoButton.innerHTML = "❌";
+			} else {
+				infoText.style.display = "none";
+				infoButton.innerHTML = "ℹ️";
+			}
+			}
+		</script>
+
+
 </body>
-</html>
+</html>	
