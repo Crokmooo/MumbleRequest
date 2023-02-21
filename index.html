@@ -1,33 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mumble - FK</title>
-    <link rel="icon" type="image/png" href="/images/theme_logo.png">
+	<meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/theme_logo.png" />
+    <title>FK | MumbleLink</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="script/i.js" crossorigin="anonymous"></script>
+	<script src="script/i_action.js"></script>
 	<style>
 		body {
+			
 			font-family: Arial, sans-serif;
-			background-color: #36393f;
+			background-color: #101010;
 		}
 		h1 {
+			font-family: 'Montserrat', sans-serif;
+			margin-top: 13%;
 			text-align: center;
 			color: #fff;
 		}
 		form {
+			font-family: 'Montserrat', sans-serif;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+
+			text-align: center;
 			margin: 0 auto;
-            margin-top: 20px;
-			max-width: 500px;
+			height: 250px;
+			width: 700px;
+
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			background-color: #40444b;
+			background-color: #202020;
 			padding: 20px;
 			border-radius: 4px;
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		}
 		label {
 			color: #fff;
-			margin-bottom: 10px;
+
+			margin: 10px;
 			text-align: left;
+			
 			width: 100%;
 		}
 		input[type="text"] {
@@ -52,17 +73,9 @@
 			background-color: #ffa047;
 		}
 		#mumble-link {
-			margin-top: 20px;
+			margin-top: 20%;
 			text-align: center;
 			color: rgba(145, 82, 0, 0.555);
-		}
-        #logo {
-			display: block;
-			width: 100px;
-			height: 100px;
-			margin: 10px;
-            margin-top: -60px;
-            margin-bottom: -50px;
 		}
 
 		#info-button {
@@ -80,9 +93,10 @@
 
 		#info-button:before,
 		#info-button:after {
+			
 			content: '';
 			position: absolute;
-			background-color: #fff;
+			background-color: #ff9100;
 			border-radius: 50%;
 			transform: scale(0);
 			transition: transform 0.3s ease-in-out;
@@ -130,8 +144,36 @@
 			margin-right: 5px;
 			color: rgba(255, 166, 0, 0.747);
 		}
+		.button-container {
+			display: flex;
+			align-items: center;
+		}
 
+		.generate-button {
+			margin-right: 10px;
+		}
+
+		.info-button:before {
+			
+			border: none;
+			background-color: #EEE;
+			color: #333;
+			cursor: pointer;
+		}
+
+		.info-button-custom {
+			background-color: #ffc400;
+
+		}
+		.generate-button1{
+			margin-top: -50%;
+		}
 		
+		#author{
+			position: fixed;
+			bottom: 10px;
+			left: 10px;
+		}
 	</style>
 </head>
 
@@ -139,30 +181,37 @@
 <body>
 	<h1>Page de connexion au Mumble de la FK</h1>
 
-	<form method="post" onsubmit="event.preventDefault(); generateLink();">
 
-		<label for="pseudo">Entrez votre pseudo :</label>
-		<input type="text" id="pseudo" name="pseudo" required>
-		<button type="submit">Générer le lien de connexion Mumble</button>
-	</form>
 
-	<div id="mumble-link"></div>
 
 	<script>
 		function generateLink() {
 			var pseudo = document.getElementById("pseudo").value;
 			var mumbleLink = document.getElementById("mumble-link");
-	
+			
 			if (!pseudo) {
-				mumbleLink.innerHTML = "Veuillez renseigner ce champ.";
-				mumbleLink.style.color = "red"; // modification de la couleur du texte
+
 				return;
 			}
-	
-			var mumbleUrl = "mumble://fkteam.mumble.gg:10003/?version=1.2.8&username=" + encodeURIComponent(pseudo);
+
+			// Le champ pseudo est rempli, on peut générer le lien de connexion Mumble
+			var mumbleUrl = "mumble://"+ encodeURIComponent(pseudo)+ "@fkteam.mumble.gg:10003";
 			var linkHtml = '<a href="' + mumbleUrl + '" style="color : orange;">Se connecter au serveur Mumble avec le pseudo ' + pseudo + '</a>';
 			mumbleLink.innerHTML = linkHtml;
+			mumbleLink.style.marginTop = "20px";
 			mumbleLink.style.color = "inherit"; // restauration de la couleur du texte
+		}
+
+		function displayMumbleInfo() {
+			Swal.fire({
+				position: 'top-end',
+				icon: 'info',
+				iconColor: 'orange',
+				background: '#FCD1AE' ,
+				html: '<strong>IP: fkteam.mumble.gg<br>Port: 10003<br>Pseudo: Pseudo InGame </strong>',
+				showConfirmButton: false,
+				heightAuto: false
+			})
 		}
 	
 		// empêcher la soumission du formulaire lorsque l'utilisateur appuie sur Entrée
@@ -171,38 +220,21 @@
 			event.preventDefault();
 		});
 	</script>
-		<button id="info-button" type="button" onclick="showInfo()" style="color : orange;">ℹ️</button>
-
-			<div id="info-text" style="display: none;">
-				<ul style="list-style-type: none; color: rgba(197, 119, 1, 0.829);">
-				<li>Ouvrez Mumble</li>
-				<li>Cliquez sur "Serveur" dans la barre de menus</li>
-				<li>Cliquez sur "Se connecter..."</li>
-				<li>Dans la boîte de dialogue "Se connecter au serveur", entrez les informations suivantes :</li>
-				<ul style="list-style-type: none; color: rgba(180, 108, 0, 0.767);">
-					<li>Nom : <strong>FKTeam Mumble</strong></li>
-					<li>Adresse : <strong>fkteam.mumble.gg</strong></li>
-					<li>Port : <strong>10003</strong></li>
-					<li>Nom d'utilisateur : [Votre pseudo]</li>
-				</ul>
-				</ul>
-			</div>
-		  
-
-			<script>
-			function showInfo() {
-			var infoText = document.getElementById("info-text");
-			var infoButton = document.getElementById("info-button");
-			if (infoText.style.display === "none") {
-				infoText.style.display = "block";
-				infoButton.innerHTML = "❌";
-			} else {
-				infoText.style.display = "none";
-				infoButton.innerHTML = "ℹ️";
-			}
-			}
-		</script>
-
+	
+	<form method="post" onsubmit="event.preventDefault();">
+	
+		<label for="pseudo">Entrez votre pseudo :</label>
+		<input type="text" id="pseudo" name="pseudo" required>
+		<div class="button-container">
+			<button class="generate-button" onclick="generateLink();">Générer le lien de connexion Mumble</button>
+			<button class="info-button info-button-custom" type = "button" onclick="displayMumbleInfo();">ℹ️</button> 
+		</div>
+		<div id="mumble-link"></div>
+	</form>
+	
 
 </body>
+<div id="author">
+	<a>By Crokmoo</a>
+</div>
 </html>	
