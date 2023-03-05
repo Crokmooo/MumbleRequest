@@ -1,0 +1,104 @@
+body {
+			
+    font-family: Arial, sans-serif;
+    background-color: #101010;
+}
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 13%;
+    text-align: center;
+    color: #fff;
+    
+}
+form {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    text-align: center;
+    margin: 0 auto;
+    height: 250px;
+    width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #202020;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+label {
+    color: #fff;
+
+    margin: 10px;
+    text-align: left;
+    
+    width: 100%;
+}
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+button {
+    background-color: #FFB347;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #ffa047;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.generate-button {
+    margin-right: 10px;
+}
+
+.info-button:before {
+    
+    border: none;
+    background-color: #EEE;
+    color: #333;
+    cursor: pointer;
+}
+
+.info-button-custom {
+    background-color: #ffc400;
+
+}
+.generate-button1{
+    margin-top: -50%;
+}
+
+#author{
+    position: fixed;
+    bottom: 1%;
+    left: 1%;
+}
+
+@keyframes glow {
+    0%, 100%{
+        color: orange;
+        text-shadow: 0 0 12px orangered, 0 0 50px orangered, 0 0 100px orangered;
+    }
+    50%, 50%{
+        color: orange;
+        text-shadow: none;
+    }
+}

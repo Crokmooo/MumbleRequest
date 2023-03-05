@@ -5,202 +5,43 @@
     <link rel="icon" type="image/png" href="images/theme_logo.png" />
     <title>FK | MumbleLink</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    
-	
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="script/i.js" crossorigin="anonymous"></script>
 	<script src="script/i_action.js"></script>
+	<h1><a>Page de connexion au Mumble de la FK</a></h1>
+
 	<style>
 		body {
 			
 			font-family: Arial, sans-serif;
 			background-color: #101010;
 		}
-		h1 {
-			font-family: 'Montserrat', sans-serif;
-			margin-top: 13%;
-			text-align: center;
-			color: #fff;
-			
-		}
-		form {
-			font-family: 'Montserrat', sans-serif;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
 
-
-			text-align: center;
-			margin: 0 auto;
-			height: 250px;
-			width: 700px;
-
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			background-color: #202020;
-			padding: 20px;
-			border-radius: 4px;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-		}
-		label {
-			color: #fff;
-
-			margin: 10px;
-			text-align: left;
-			
-			width: 100%;
-		}
-		input[type="text"] {
-			padding: 10px;
-			font-size: 16px;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			margin: 10px 0;
-			width: 100%;
-			box-sizing: border-box;
-		}
 		button {
-			background-color: #FFB347;
-			color: #fff;
-			padding: 12px 20px;
-			border: none;
 			border-radius: 4px;
-			cursor: pointer;
-			font-size: 16px;
 		}
-		button:hover {
-			background-color: #ffa047;
-		}
+
 		#mumble-link {
 			margin-top: 20%;
 			text-align: center;
 			color: rgba(145, 82, 0, 0.555);
 		}
-
-		#info-button {
-			margin-left: 66%;
-			margin-top: -30%;
-			position: relative;
-			background-color: transparent;
-			color: #fff;
-			font-size: 20%;
-			border: none;
-			cursor: pointer;
-			outline: none;
-			transition: transform 0.3s ease-in-out;
-		}
-
-		#info-button:before,
-		#info-button:after {
-			
-			content: '';
-			position: absolute;
-			background-color: #ff9100;
-			border-radius: 50%;
-			transform: scale(0);
-			transition: transform 0.3s ease-in-out;
-		}
-
-		#info-button:before {
-			top: -2px;
-			left: -2px;
-			width: 8px;
-			height: 8px;
-		}
-
-		#info-button:after {
-			bottom: -2px;
-			right: -2px;
-			width: 8px;
-			height: 8px;
-		}
-
-		#info-button:hover:before,
-		#info-button:hover:after {
-			transform: scale(0.5);
-		}
-
-		#info-button:hover {
-			transform: rotate(360deg);
-		}
-		#info-text {
-			margin-left: 70%;
-			color :rgba(145, 82, 0, 0.555);
-			background-color: #40444b52;
-			border-radius: 5%;
-		}
-		#info-text li {
-			margin-bottom: 10%;
-			line-height: 1.5;
-		}
-
-		#info-text strong {
-			font-weight: bold;
-		}
-
-		#info-text ul li::before {
-			content: "\2022"; /* caractère unicode pour le point */
-			margin-right: 5%;
-			color: rgba(255, 166, 0, 0.747);
-		}
-		.button-container {
-			display: flex;
-			align-items: center;
-		}
-
-		.generate-button {
-			margin-right: 10px;
-		}
-
-		.info-button:before {
-			
-			border: none;
-			background-color: #EEE;
-			color: #333;
-			cursor: pointer;
-		}
-
-		.info-button-custom {
-			background-color: #ffc400;
-
-		}
-		.generate-button1{
-			margin-top: -50%;
-		}
-		
-		#author{
-			position: fixed;
-			bottom: 1%;
-			left: 1%;
-		}
 		h1 {
+			margin-top: 10%;
 			animation: glow 10s ease-in-out infinite;
 			color : orangered;
 			text-decoration: wavy;
 			color: orange;
-		}
-
-		@keyframes glow {
-			0%, 100%{
-				color: orange;
-				text-shadow: 0 0 12px orangered, 0 0 50px orangered, 0 0 100px orangered;
-			}
-			50%, 50%{
-				color: orange;
-				text-shadow: none;
-			}
 		}
 	</style>
 </head>
 
 
 <body>
-	
-	<h1><a>Page de connexion au Mumble de la FK</a></h1>
-
-
 
 	<script>
 		function generateLink() {
@@ -213,7 +54,7 @@
 			}
 
 			// Le champ pseudo est rempli, on peut générer le lien de connexion Mumble
-			var mumbleUrl = "mumble://"+ encodeURIComponent(pseudo)+ "@fkteam.mumble.gg:10003";
+			var mumbleUrl = "mumble://"+ encodeURIComponent(pseudo)+ "@fkmumble.mumble.gg:10016";
 			var linkHtml = '<a href="' + mumbleUrl + '" style="color : orange;">Se connecter au serveur Mumble avec le pseudo ' + pseudo + '</a>';
 			mumbleLink.innerHTML = linkHtml;
 			mumbleLink.style.marginTop = "20px";
@@ -226,7 +67,7 @@
 				icon: 'info',
 				iconColor: 'orange',
 				background: '#FCD1AE' ,
-				html: '<strong>IP: fkteam.mumble.gg<br>Port: 10003<br>Pseudo: PseudoInGame </strong>',
+				html: '<strong>IP: fkmumble.mumble.gg<br>Port: 10016<br>Pseudo: PseudoInGame </strong>',
 				showConfirmButton: false,
 				heightAuto: false
 			})
@@ -250,8 +91,8 @@
 		<div id="mumble-link"></div>
 	</form>
 	
-
 </body>
+
 <div id="author">
 	<a>By Crokmoo</a>
 </div>
