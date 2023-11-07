@@ -54,7 +54,7 @@
 			}
 
 			// Le champ pseudo est rempli, on peut générer le lien de connexion Mumble
-			var mumbleUrl = "mumble://"+ encodeURIComponent(pseudo)+ "@fkmumble.mumble.gg:10013";
+			var mumbleUrl = "mumble://"+ encodeURIComponent(pseudo)+ "@fkmumble.mumble.gg:10007";
 			var linkHtml = '<a href="' + mumbleUrl + '" style="color : orange;">Se connecter au serveur Mumble avec le pseudo ' + pseudo + '</a>';
 			mumbleLink.innerHTML = linkHtml;
 			mumbleLink.style.marginTop = "20px";
@@ -67,7 +67,7 @@
 				icon: 'info',
 				iconColor: 'orange',
 				background: '#FCD1AE' ,
-				html: '<strong>IP: fkmumble.mumble.gg<br>Port: 10013<br>Pseudo: PseudoInGame </strong>',
+				html: '<strong>IP: fkmumble.mumble.gg<br>Port: 10007<br>Pseudo: PseudoInGame </strong>',
 				showConfirmButton: false,
 				heightAuto: false
 			})
