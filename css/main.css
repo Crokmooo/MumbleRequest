@@ -102,3 +102,15 @@ button:hover {
         text-shadow: none;
     }
 }
+
+iframe {
+    position: absolute; /* Adjusts the position to absolute */
+    right: 0;            /* Aligns the iframe to the right edge of the nearest positioned ancestor */
+    top: 50%;            /* Centers the iframe vertically */
+    transform: translateY(-50%); /* Adjusts the vertical alignment */
+    width: 350px;
+    height: 500px;
+    allowtransparency: true;
+    frameborder: 0;
+    sandbox: "allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts";
+}
